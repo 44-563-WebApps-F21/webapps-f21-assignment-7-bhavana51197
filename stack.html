@@ -49,6 +49,7 @@
 
     <button onclick="popItem()">POP values</button>
     <button onclick="zap()">Zap values</button>
+    <button onclick="unique()">Unique</button>
 
 
 
@@ -87,6 +88,25 @@
             }
             console.log("We are getting rid of allelements with '" + field + "'")
         }
+
+        function unique() {
+            var array = [];
+            var stack = document.getElementsByClassName("stack");
+            var length = stack.length;
+            var cnt = 0;
+            for (var value = 0; value < length; value++) {
+                if (array.includes(stack[value - cnt].innerHTML)) {
+                    stack[value - cnt].remove();
+                    cnt++;
+                }
+                else {
+                    array.push(stack[value].innerHTML);
+                }
+            }
+
+            console.log(array);
+        }
+
     </script>
 </body>
 

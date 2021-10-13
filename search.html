@@ -28,6 +28,7 @@
                 <div class="col-sm-3" id="distance" style="background-color:rgb(224, 192, 202);">Distance is unknown.
                 </div>
             </div>
+            <button type="button" class="btn btn-primary" onclick="newgame()">New game</button>
         </div><br>
 
         <div class="container">
@@ -93,15 +94,28 @@
             var ids = ["image0", "image1", "image2", "image3", "image4", "image5", "image6", "image7", "image8", "image9", "image10",
                 "image11", "image12", "image13", "image14", "image15", "image16", "image17", "image18", "image19", "image20", "image21", "image22", "image23"];
             var triesCount = 0;
-            var animalLocation = 13;
+            var animalLocation = Math.floor(Math.random()*23 + 0);
 
-            var imgId = 0;
             tries = document.getElementById("tries");
             dist = document.getElementById("distance");
+
+            function newgame(){
+                animalLocation = Math.floor(Math.random()*23 + 0);
+                triesCount = 0;
+                tries.innerHTML = "Number of tries is " + triesCount;
+                dist.innerHTML = "Distance is 0";
+
+                for(var id in ids){
+                    image = document.getElementById(ids[id]);
+                    image.setAttribute('src', 'images/plant.jpg');
+                }
+            }
+
             function check(position) {
+                console.log(animalLocation);
                 imageId = ids[arguments[0]];
                 image = document.getElementById(imageId);
-                if (position == 13) {
+                if (position == animalLocation) {
                     image.setAttribute('src', 'images/animal.jpg');
                 }
                 else {
